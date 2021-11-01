@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz timer english grammer game</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <script src="words.js" defer></script>
+  </head>
+
+  <body>
+    <div id="menu">
+    <h1>Welcome, The Quiz<br />Is Waiting...</h1>
+    <div id="playWrapper">
+        <div id="play">Get Started</div>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div id="points1"></div>
+    <div id="points2"></div>
+    <div id="turn"></div>
+    
+    <div id="table">
+       <progress id="time" max="120" min="0" value="120"></progress>
+        <h1 id="question"></h1>
+        
+        <div id="a"></div>
+        <div id="b"> </div>
+        <div style="clear: both;"></div>
+        <div id="c"></div>
+        <div id="d"></div>
+        <div style="clear: both;"></div>
+    </div>
+	
+	<div id="pause">
+		<h1 id="rulesH1">Rules:</h1>
+		<div id="rules">
+			Split Into 2 Teams, Team1 And Team2.<br />
+			Each Question Has A Time Limit Of 12 Seconds<br />
+			One Of Team1's Members Will Represent His Team.<br />
+			He Will Answer A Question, Then Its Going To Be Team2's Turn.<br />
+			Team2 Also Chooses Someone To Represent Their Team.<br />
+			After Each Question A New Representant Has To Be Chosen<br /><hr /><br />
+			<span style="color: blue;">Blue Color Means You've Chosen The Correct Answer</span><br />
+			<span style="color: red;">Red Color Shows Up After Choosing The Wrong Answer<br />You Also Get To See What Was The Correct Option</span><br /><hr /><br />
+			And Lastly...   Enjoy!<br />
+		</div>
+		<button id="next">Next Question</button>
+	</div>
+</div>
+  </body>
+</html>
