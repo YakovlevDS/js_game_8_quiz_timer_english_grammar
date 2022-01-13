@@ -21,9 +21,9 @@ class View {
     self.d = document.getElementById("d");
     self.thisQuestion;
     self.controller = controller;
-    self.points1.innerHTML = "Team1: " + model.points1;
-    self.points2.innerHTML = "Team2: " + model.points2;
-    self.turn.innerHTML = "Turn: Team1";
+    self.points1.innerHTML = "Gamer_1: " + model.points1;
+    self.points2.innerHTML = "Gamer_2: " + model.points2;
+    self.turn.innerHTML = "Turn: Gamer_1";
     self.interval = setInterval(() => {
       if (model.time > 0 && !model.start) {
         model.time--;
@@ -53,7 +53,7 @@ class View {
           self.b.style.pointerEvents = "all";
           self.c.style.pointerEvents = "all";
           self.d.style.pointerEvents = "all";
-        }, 4000);
+        }, 1000);
         model.start = true;
       }
     }, 100);
@@ -92,7 +92,7 @@ class View {
       self.pause.style.visibility = "visible";
       self.wrapper.style.visibility = "visible";
       self.table.style.visibility = "hidden";
-    }, 2000);
+    }, 1000);
   }
 }
 
@@ -101,12 +101,12 @@ class Model {
     this.words = data;
     this.points1 = 0;
     this.points2 = 0;
-    this.turn = "Team1";
+    this.turn = "Gamer_1";
     this.newQuestion = Math.floor(Math.random() * data.length);
     this.usedQuestions = [];
     this.questionCount = 0;
     this.start = true;
-    this.time = 120;
+    this.time = 500;
   }
 
   Question() {
@@ -125,8 +125,8 @@ class Controller {
   }
 
   updateLeaderboard() {
-    this.view.points1.innerHTML = "Team1: " + this.model.points1;
-    this.view.points2.innerHTML = "Team2: " + this.model.points2;
+    this.view.points1.innerHTML = "Gamer_1: " + this.model.points1;
+    this.view.points2.innerHTML = "Gamer_2: " + this.model.points2;
   }
 
   update() {
@@ -137,8 +137,8 @@ class Controller {
     this.view.c.innerHTML = this.view.thisQuestion.c;
     this.view.d.innerHTML = this.view.thisQuestion.d;
     this.view.table.style.visibility = "visible";
-    this.model.time = 120;
-    document.getElementById("time").value = 120;
+    this.model.time = 500;
+    document.getElementById("time").value = 500;
     this.model.start = false;
   }
 
@@ -151,8 +151,8 @@ class Controller {
     if (this.view.thisQuestion.correct == this.view.thisQuestion[btn]) {
       this.view[btn].style.backgroundColor = "blue";
       this.view[btn].style.color = "white";
-      if (this.model.turn == "Team1") this.model.points1++;
-      if (this.model.turn == "Team2") this.model.points2++;
+      if (this.model.turn == "Gamer_1") this.model.points1++;
+      if (this.model.turn == "Gamer_2") this.model.points2++;
       this.updateLeaderboard();
     } else {
       this.view[btn].style.backgroundColor = "red";
@@ -177,11 +177,11 @@ class Controller {
       this.view.b.style.pointerEvents = "all";
       this.view.c.style.pointerEvents = "all";
       this.view.d.style.pointerEvents = "all";
-      if (this.model.turn == "Team1") this.model.turn = "Team2";
-      else this.model.turn = "Team1";
+      if (this.model.turn == "Gamer_1") this.model.turn = "Gamer_2";
+      else this.model.turn = "Gamer_1";
       this.view.turn.innerHTML = "Turn: " + this.model.turn;
       let victor =
-        this.model.points1 > this.model.points2 ? "Team1 Won!" : "Team2 Won!";
+        this.model.points1 > this.model.points2 ? "Gamer_1 Won!" : "Gamer_2 Won!";
       if (this.model.points1 == this.model.points2) victor = "Its A Draw!";
       if (this.model.questionCount == 12) {
         alert(victor);
@@ -198,7 +198,7 @@ class Controller {
         this.view.table.style.visibility = "visible";
         this.view.pause.style.visibility = "hidden";
       }
-    }, 4000);
+    }, 1000);
   }
 }
 
